@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -8,6 +9,9 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Wordpress Engineering Handbook',
+			customCss: [
+				'./src/assets/css/tailwind.css',
+			],
 			social: {
 				github: 'https://github.com/Travelopia/wordpress-engineering-handbook',
 			},
@@ -25,5 +29,9 @@ export default defineConfig({
 				},
 			],
 		}),
+		tailwind({
+			// Disable the default base styles:
+			applyBaseStyles: false,
+		})
 	],
 });
